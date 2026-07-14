@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Track the Turtles — Follow Sea Turtles Around the World | A Hahn Family Mission</title>
+<meta name="description" content="Follow real satellite-tracked sea turtles around the world, learn why they matter, and join a faith-driven mission to protect them. Built by the Hahn Family — partners and environmental investors welcome." />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#062a3a" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Track the Turtles" />
+<meta property="og:title" content="Track the Turtles — Follow Sea Turtles Around the World" />
+<meta property="og:description" content="Follow real satellite-tracked sea turtles, learn why they matter, and join a faith-driven mission to protect them. A Hahn Family mission." />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%A2%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --deep:#062a3a; --deep2:#0a3a4d; --teal:#0e7c86; --aqua:#3fb8c4;
+    --sand:#e7dcc2; --foam:#eef8f8; --ink:#0b2530; --muted:#5b7986;
+    --gold:#cba45a; --line:rgba(63,184,196,.22);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Inter",system-ui,sans-serif;color:var(--ink);background:var(--foam);line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1,h2,h3,.serif{font-family:"Fraunces",Georgia,serif;line-height:1.12;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 clamp(1.25rem,5vw,2.5rem)}
+  .eyebrow{text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;font-weight:600;color:var(--teal)}
+  .btn{display:inline-block;font-weight:600;font-size:.98rem;padding:.85rem 1.6rem;border-radius:999px;transition:transform .15s,background .2s,border-color .2s}
+  .btn-aqua{background:var(--aqua);color:#04222c}
+  .btn-aqua:hover{background:#5fcdd8;transform:translateY(-2px)}
+  .btn-ghost{border:1px solid rgba(255,255,255,.35);color:#fff}
+  .btn-ghost:hover{border-color:var(--aqua);transform:translateY(-2px)}
+  .btn-solid{background:var(--teal);color:#fff}
+  .btn-solid:hover{background:#0b6a72;transform:translateY(-2px)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(6,42,58,.9);backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px;color:#fff}
+  .brand{display:flex;align-items:center;gap:.55rem;font-family:"Fraunces";font-weight:700;font-size:1.1rem}
+  .brand .em{font-size:1.4rem}
+  .nav a.cta{background:var(--aqua);color:#04222c;padding:.5rem 1.1rem;border-radius:999px;font-weight:600;font-size:.9rem}
+
+  /* Hero */
+  .hero{position:relative;overflow:hidden;color:#fff;text-align:center;
+    background:radial-gradient(80% 60% at 50% 0%, rgba(63,184,196,.35), transparent 60%),
+      linear-gradient(180deg,#0a3a4d 0%, #062a3a 75%);
+    padding:clamp(3.5rem,9vw,6.5rem) 0 clamp(3rem,7vw,5rem)}
+  .hero .em{font-size:3rem;margin-bottom:.6rem}
+  .hero h1{font-size:clamp(2.6rem,7vw,4.6rem);font-weight:700;margin-bottom:.6rem}
+  .hero h1 .g{color:var(--aqua)}
+  .hero .tag{font-family:"Fraunces";font-size:clamp(1.2rem,3vw,1.7rem);color:var(--sand);font-weight:500;margin-bottom:1.4rem}
+  .hero p.lead{color:rgba(238,248,248,.82);font-size:clamp(1.05rem,2vw,1.2rem);max-width:46ch;margin:0 auto 2rem}
+  .cta-row{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+
+  section{padding:clamp(3rem,7vw,5rem) 0}
+  .band{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .head{max-width:640px;margin:0 auto 2.4rem;text-align:center}
+  .head h2{font-size:clamp(1.9rem,4.4vw,2.8rem);font-weight:600;margin:.6rem 0 .7rem;color:var(--deep)}
+  .head p{color:var(--muted);font-size:1.05rem}
+
+  /* Tracker cards */
+  .track{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.2rem}
+  .tcard{background:linear-gradient(180deg,#fff,#f2fafb);border:1px solid var(--line);border-radius:18px;padding:1.7rem;display:flex;flex-direction:column}
+  .tcard .em{font-size:1.7rem}
+  .tcard h3{font-size:1.2rem;color:var(--deep);margin:.5rem 0 .5rem}
+  .tcard p{color:var(--muted);font-size:.95rem;flex:1}
+  .tcard .go{margin-top:1rem;color:var(--teal);font-weight:600;font-size:.92rem}
+  .livebadge{display:inline-flex;align-items:center;gap:.4rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#0b6a72;background:rgba(63,184,196,.16);border-radius:999px;padding:.25rem .7rem;align-self:flex-start;margin-bottom:.4rem}
+  .livebadge .dot{width:7px;height:7px;border-radius:50%;background:#18b34a;box-shadow:0 0 0 0 rgba(24,179,74,.6);animation:pulse 1.8s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(24,179,74,.55)}70%{box-shadow:0 0 0 8px rgba(24,179,74,0)}100%{box-shadow:0 0 0 0 rgba(24,179,74,0)}}
+
+  /* Story */
+  .story{background:var(--deep);color:#fff}
+  .story .wrap{max-width:760px}
+  .story h2{color:#fff}
+  .story p{color:rgba(238,248,248,.85);margin-bottom:1.1rem;font-size:1.06rem}
+  .story .pull{font-family:"Fraunces";font-size:clamp(1.3rem,3vw,1.7rem);color:var(--sand);font-weight:500;border-left:3px solid var(--aqua);padding-left:1.1rem;margin:1.4rem 0}
+
+  /* Stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+  @media (max-width:640px){.stats{grid-template-columns:repeat(2,1fr);gap:1.6rem}}
+  .stat .n{font-family:"Fraunces";font-size:clamp(1.9rem,4.5vw,2.8rem);font-weight:700;color:var(--teal)}
+  .stat .l{font-size:.86rem;color:var(--muted);margin-top:.25rem}
+
+  /* Mission */
+  .mission{background:linear-gradient(160deg,#0e7c86,#0a3a4d);color:#fff;text-align:center}
+  .mission blockquote{font-family:"Fraunces";font-size:clamp(1.5rem,3.4vw,2.1rem);font-weight:600;max-width:24ch;margin:0 auto 1rem}
+  .mission p{color:rgba(238,248,248,.85);max-width:54ch;margin:0 auto}
+  .mission .verse{color:var(--sand);font-size:.9rem;margin-top:1.2rem}
+
+  /* Invest */
+  .invest{background:#fff}
+  .invest .card{background:linear-gradient(180deg,#f2fafb,#eaf7f8);border:1px solid var(--line);border-radius:22px;padding:clamp(2rem,5vw,3.2rem);text-align:center;max-width:760px;margin:0 auto}
+  .invest h2{color:var(--deep);font-size:clamp(1.8rem,4vw,2.5rem);font-weight:600;margin-bottom:.8rem}
+  .invest p{color:var(--muted);max-width:52ch;margin:0 auto 1.6rem}
+
+  footer{background:var(--deep);color:rgba(238,248,248,.7);text-align:center;padding:2.6rem 0;font-size:.9rem;border-top:1px solid rgba(255,255,255,.08)}
+  footer a{color:var(--aqua);font-weight:600}
+  footer .verse{color:var(--sand);font-style:italic;font-size:.85rem;margin-top:.7rem}
+  .disclaimer{color:var(--muted);font-size:.78rem;max-width:640px;margin:1.4rem auto 0;text-align:center}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="em">🐢</span> Track the Turtles</a>
+    <a class="cta" href="#follow">Follow a turtle →</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="em">🐢🌊</div>
+    <div class="eyebrow" style="color:var(--aqua)">A Hahn Family Mission</div>
+    <h1>Track the turtles<br /><span class="g">around the world.</span></h1>
+    <p class="tag">Real turtles. Real journeys. A real reason to protect them.</p>
+    <p class="lead">Follow sea turtles fitted with satellite trackers as they cross thousands of miles of open ocean — then help us keep their waters clean for the generations behind us.</p>
+    <div class="cta-row">
+      <a class="btn btn-aqua" href="#follow">🛰️ Follow real turtles</a>
+      <a class="btn btn-ghost" href="#mission">Our mission →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Follow real turtles -->
+<section id="follow">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Live Satellite Tracking</span>
+      <h2>Follow a real sea turtle right now</h2>
+      <p>These are live migration maps from world-class conservation groups — real turtles, tracked by real researchers. Pick one and watch where the ocean takes them.</p>
+    </div>
+    <div class="track">
+      <a class="tcard" href="https://conserveturtles.org/turtle-tracking/" target="_blank" rel="noopener">
+        <span class="livebadge"><span class="dot"></span>Live</span>
+        <span class="em">🛰️</span>
+        <h3>Sea Turtle Conservancy — Turtle Tracker</h3>
+        <p>Follow individually named sea turtles — like Koa, Donna Shello, and dozens more — as they navigate thousands of miles across the world's oceans.</p>
+        <span class="go">Track a turtle →</span>
+      </a>
+      <a class="tcard" href="https://tourdeturtles.org/" target="_blank" rel="noopener">
+        <span class="livebadge"><span class="dot"></span>Live</span>
+        <span class="em">🏁</span>
+        <h3>Tour de Turtles</h3>
+        <p>A fun, friendly &ldquo;migration marathon&rdquo; where satellite-tracked turtles race across the ocean each year — cheer one on and learn what threatens them.</p>
+        <span class="go">Join the race →</span>
+      </a>
+      <a class="tcard" href="https://www.seaturtle.org/tracking/" target="_blank" rel="noopener">
+        <span class="livebadge"><span class="dot"></span>Live</span>
+        <span class="em">🌍</span>
+        <h3>Global Sea Turtle Network</h3>
+        <p>The worldwide satellite-tracking hub used by researchers everywhere — hundreds of turtles mapped across every ocean.</p>
+        <span class="go">Explore the map →</span>
+      </a>
+    </div>
+    <p class="disclaimer">Tracking maps are provided by the Sea Turtle Conservancy and the Global Sea Turtle Network. We proudly point you to their real, ongoing work — please consider supporting them directly.</p>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="story" id="story">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--aqua)">Why This Matters to Me</span>
+    <h2 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:600;margin:.7rem 0 1.2rem">Costa Rica — the land of the turtles</h2>
+    <p>As a young man at <strong>St. Augustine Prep</strong> in Richland, New Jersey, I went on a <strong>Third Semester</strong> trip to <strong>Costa Rica</strong> — the land of the turtles. Standing on those shores, watching the ocean the way God made it, is a memory I&rsquo;ve carried my whole life.</p>
+    <p class="pull">&ldquo;Some things you see once and they never leave you. The turtles are one of them.&rdquo; — David Hahn</p>
+    <p>Sea turtles have crossed these oceans for more than a hundred million years. They were here long before us, and if we do our part, they&rsquo;ll be here long after. This mission is my way of giving back to the water that gave me so much &mdash; and of teaching my family, and yours, to be good stewards of it.</p>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="band">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">Why It Matters</span>
+      <h2>Ancient travelers, in real trouble</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">100M+</div><div class="l">Years sea turtles have roamed the oceans</div></div>
+      <div class="stat"><div class="n">6 of 7</div><div class="l">Species now threatened or endangered <span style="opacity:.7">(IUCN)</span></div></div>
+      <div class="stat"><div class="n">1,000s</div><div class="l">Of miles a single turtle migrates</div></div>
+      <div class="stat"><div class="n">Every one</div><div class="l">Counts — hatchling survival is roughly 1 in 1,000</div></div>
+    </div>
+    <p class="disclaimer">Threats include plastic pollution, accidental capture in fishing gear, coastal development, and warming seas. The good news: informed people, cleaner water, and protected beaches make a measurable difference.</p>
+  </div>
+</section>
+
+<!-- Mission / faith -->
+<section class="mission" id="mission">
+  <div class="wrap">
+    <span class="eyebrow" style="color:var(--sand)">Our Mission</span>
+    <blockquote>Protect the waters. Steward the creatures. Enlarge the good.</blockquote>
+    <p>We believe caring for creation is an act of worship. Through awareness, clean water, and real support for the people already protecting these turtles, we want to leave the ocean better than we found it &mdash; and inspire others to do the same, all over the world.</p>
+    <p class="verse">&ldquo;Now unto him that is able to do exceeding abundantly above all that we ask or think&hellip;&rdquo; &mdash; Ephesians 3:20 &nbsp;&bull;&nbsp; &ldquo;Oh that thou wouldest&hellip; enlarge my coast.&rdquo; &mdash; the prayer of Jabez, 1 Chronicles 4:10</p>
+  </div>
+</section>
+
+<!-- Invest / partner -->
+<section class="invest" id="partner">
+  <div class="wrap">
+    <div class="card">
+      <span class="eyebrow">Partner With Us</span>
+      <h2>Investors &amp; partners for a cleaner ocean</h2>
+      <p>We&rsquo;re building conservation-minded ventures the right way &mdash; honest, faith-driven, and built to last. If you care about protecting our oceans and want to build something that matters alongside a family that means it, let&rsquo;s talk.</p>
+      <div class="cta-row">
+        <a class="btn btn-solid" href="sms:2522539629">💬 Text David — (252) 253-9629</a>
+        <a class="btn" style="border:1px solid var(--line);color:var(--deep)" href="mailto:dhahn402@gmail.com?subject=Track%20the%20Turtles%20%E2%80%94%20Partnership">✉️ Email us</a>
+        <a class="btn" style="border:1px solid var(--line);color:var(--deep)" href="https://hahntechcorp.com/" target="_blank" rel="noopener">Hahn Technologies Corp →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><strong>🐢 Track the Turtles</strong> · A <a href="https://dhahn402.github.io/hahn-family/" target="_blank" rel="noopener">Hahn Family of Companies</a> mission · New Bern, NC</div>
+    <div style="margin-top:.5rem"><a href="sms:2522539629">Text (252) 253-9629</a> · <a href="mailto:dhahn402@gmail.com">dhahn402@gmail.com</a></div>
+    <div class="verse">&ldquo;The earth is the LORD&rsquo;s, and the fulness thereof.&rdquo; — Psalm 24:1 · Soli Deo Gloria ✝️</div>
+    <p class="disclaimer">Track the Turtles is an educational and awareness project. Live tracking data belongs to the Sea Turtle Conservancy and the Global Sea Turtle Network; please support their work directly.</p>
+  </div>
+</footer>
+</body>
+</html>
