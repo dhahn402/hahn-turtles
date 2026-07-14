@@ -195,6 +195,7 @@
   <div class="wrap">
     <span class="eyebrow" style="color:var(--sand)">Our Mission</span>
     <blockquote>Protect the waters. Steward the creatures. Enlarge the good.</blockquote>
+    <p style="color:var(--sand);font-family:'Fraunces',serif;font-size:clamp(1.1rem,2.6vw,1.4rem);margin-bottom:1.2rem">As they said on a certain island off this very coast &mdash; <em>&ldquo;spare no expense.&rdquo;</em> When it comes to protecting what God made, neither will we. 🦖</p>
     <p>We believe caring for creation is an act of worship. Through awareness, clean water, and real support for the people already protecting these turtles, we want to leave the ocean better than we found it &mdash; and inspire others to do the same, all over the world.</p>
     <p class="verse">&ldquo;Now unto him that is able to do exceeding abundantly above all that we ask or think&hellip;&rdquo; &mdash; Ephesians 3:20 &nbsp;&bull;&nbsp; &ldquo;Oh that thou wouldest&hellip; enlarge my coast.&rdquo; &mdash; the prayer of Jabez, 1 Chronicles 4:10</p>
   </div>
@@ -248,7 +249,22 @@
     <div style="margin-top:.5rem"><a href="sms:2522539629">Text (252) 253-9629</a> · <a href="mailto:dhahn402@gmail.com">dhahn402@gmail.com</a></div>
     <div class="verse">&ldquo;The earth is the LORD&rsquo;s, and the fulness thereof.&rdquo; — Psalm 24:1 · Soli Deo Gloria ✝️</div>
     <p class="disclaimer">Track the Turtles is an educational and awareness project. Live tracking data belongs to the Sea Turtle Conservancy and the Global Sea Turtle Network; please support their work directly.</p>
+    <p class="disclaimer" style="margin-top:.5rem">Music: &ldquo;Crossing the Chasm&rdquo; by Kevin MacLeod (incompetech.com) &mdash; licensed under <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">Creative Commons BY 4.0</a>. &ldquo;Spare no expense&rdquo; is an affectionate nod to a classic adventure film, used in homage.</p>
   </div>
 </footer>
+
+<button id="musicBtn" aria-label="Play adventure theme music"
+  style="position:fixed;right:16px;bottom:16px;z-index:99;background:var(--aqua);color:#04222c;border:none;border-radius:999px;padding:.7rem 1.1rem;font:600 .88rem 'Inter',system-ui,sans-serif;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.35)">🎵 Play adventure theme</button>
+<audio id="theme" src="adventure-theme.mp3" loop preload="none"></audio>
+<script>
+  (function(){
+    var a=document.getElementById('theme'), b=document.getElementById('musicBtn');
+    b.addEventListener('click', function(){
+      if(a.paused){ a.volume=0.55; a.play().then(function(){ b.textContent='⏸ Pause theme'; }).catch(function(){}); }
+      else { a.pause(); b.textContent='🎵 Play adventure theme'; }
+    });
+    a.addEventListener('ended', function(){ b.textContent='🎵 Play adventure theme'; });
+  })();
+</script>
 </body>
 </html>
