@@ -136,6 +136,51 @@
   </div>
 </section>
 
+<!-- Live conditions at Tortuguero Beach — free Open-Meteo API, no key -->
+<section id="conditions" style="background:var(--deep2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)">
+  <div class="wrap">
+    <div class="head">
+      <span class="livebadge"><span class="dot"></span>Live now</span>
+      <h2 style="color:var(--foam);font-size:clamp(1.5rem,3.6vw,2.1rem);margin:.5rem 0 .4rem">Right now at Tortuguero Beach 🐢</h2>
+      <p style="color:#bcdbe1">Live ocean conditions on Costa Rica's Caribbean coast — the very sands where thousands of sea turtles come home to nest.</p>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:1.4rem">
+      <div style="background:var(--deep);border:1px solid var(--line);border-radius:16px;padding:16px 28px;min-width:150px;text-align:center">
+        <div style="font-size:1.9rem;line-height:1">🌊</div>
+        <div id="t-wave" style="font-size:1.55rem;font-weight:800;color:var(--aqua);font-family:'Fraunces',Georgia,serif;margin:3px 0 1px">—</div>
+        <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em">Wave height</div>
+      </div>
+      <div style="background:var(--deep);border:1px solid var(--line);border-radius:16px;padding:16px 28px;min-width:150px;text-align:center">
+        <div style="font-size:1.9rem;line-height:1">🌡️</div>
+        <div id="t-water" style="font-size:1.55rem;font-weight:800;color:var(--aqua);font-family:'Fraunces',Georgia,serif;margin:3px 0 1px">—</div>
+        <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em">Water temp</div>
+      </div>
+      <div style="background:var(--deep);border:1px solid var(--line);border-radius:16px;padding:16px 28px;min-width:150px;text-align:center">
+        <div id="t-airc" style="font-size:1.9rem;line-height:1">☀️</div>
+        <div id="t-air" style="font-size:1.55rem;font-weight:800;color:var(--aqua);font-family:'Fraunces',Georgia,serif;margin:3px 0 1px">—</div>
+        <div style="font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em">Air temp</div>
+      </div>
+    </div>
+    <p style="text-align:center;color:var(--muted);font-size:.76rem;margin-top:1.1rem">Live from Open-Meteo · refreshes each time you open the page</p>
+  </div>
+</section>
+<script>
+(function(){
+  var codes={0:'☀️',1:'🌤️',2:'⛅',3:'☁️',45:'🌫️',48:'🌫️',51:'🌦️',53:'🌦️',55:'🌦️',61:'🌧️',63:'🌧️',65:'🌧️',80:'🌦️',81:'🌦️',82:'⛈️',95:'⛈️',96:'⛈️',99:'⛈️'};
+  function set(id,v){ var e=document.getElementById(id); if(e)e.textContent=v; }
+  fetch('https://marine-api.open-meteo.com/v1/marine?latitude=10.54&longitude=-83.50&current=wave_height,sea_surface_temperature&length_unit=imperial&temperature_unit=fahrenheit')
+    .then(function(r){return r.json();}).then(function(d){ var c=d&&d.current; if(!c)return;
+      if(c.wave_height!=null) set('t-wave', c.wave_height.toFixed(1)+' ft');
+      if(c.sea_surface_temperature!=null) set('t-water', Math.round(c.sea_surface_temperature)+'°F');
+    }).catch(function(){});
+  fetch('https://api.open-meteo.com/v1/forecast?latitude=10.54&longitude=-83.50&current=temperature_2m,weather_code&temperature_unit=fahrenheit&timezone=America/Costa_Rica')
+    .then(function(r){return r.json();}).then(function(d){ var c=d&&d.current; if(!c)return;
+      if(c.temperature_2m!=null) set('t-air', Math.round(c.temperature_2m)+'°F');
+      var e=document.getElementById('t-airc'); if(e&&codes[c.weather_code]) e.textContent=codes[c.weather_code];
+    }).catch(function(){});
+})();
+</script>
+
 <!-- Follow real turtles -->
 <section id="follow">
   <div class="wrap">
