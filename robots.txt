@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://dhahn402.github.io/hahn-turtles/sitemap.xml
+Sitemap: https://tortugueroturtles.com/sitemap.xml
